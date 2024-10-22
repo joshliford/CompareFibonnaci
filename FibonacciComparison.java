@@ -9,29 +9,29 @@ public class FibonacciComparison {
     }
 
     public static int iterativeFibonacci(int n) {
-        if (n <= 1) {
+        if (n <= 1) { // Base Case for F(0) = 0 and F(1) = 1;
             return n;
         }
-        int a = 0;
-        int b = 1;
-        int fib = 0;
+        int a = 0; // Placeholder for F(0);
+        int b = 1; // Placeholder for F(1);
+        int fib = 0; // Placeholder for F(n);
         for (int i = 2; i <= n; i++) {
-            fib = a + b;
-            a = b;
-            b = fib;
+            fib = a + b; // each iteration the sum of each fib number is calculated;
+            a = b; // b (which holds F(i-1)) is swapped with 'a';
+            b = fib; // newly calculated fib number is assigned 'b' (which represents F(i));
         }
         return fib;
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
         int n;
         
         do { // Do-while loop to repeatedly prompt the user to enter a non-negative value for n
         System.out.print("Enter a positive integer n: ");
-        n = scanner.nextInt();
+        n = input.nextInt();
  
-        } while (n < 0); // End of do-while loop
+        } while (n < 0);
 
             // Measure time for recursive Fibonacci
             long startTime = System.nanoTime();
@@ -46,6 +46,6 @@ public class FibonacciComparison {
             long iterativeTime = endTime - startTime;
 
             System.out.println("n: " + n + ", Recursive time: " + recursiveTime + " ns, Iterative time: " + iterativeTime + " ns");
-            scanner.close(); // Close the scanner object to prevent memory or resource leaks
+            input.close(); // Close the scanner object to prevent memory or resource leaks
         }
     }
